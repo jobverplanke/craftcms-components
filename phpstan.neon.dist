@@ -1,0 +1,11 @@
+includes:
+  - ./vendor/craftcms/phpstan/phpstan.neon
+  - ./vendor/phpstan/phpstan-strict-rules/rules.neon
+  - ./vendor/phpstan/phpstan-deprecation-rules/rules.neon
+
+parameters:
+  level: 6
+  paths:
+    - src
+  ignoreErrors:
+    - '#Unable to resolve the template type T in call to method static method Craft::createObject\(\)#'
