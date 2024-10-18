@@ -95,7 +95,7 @@ It's recommended to leave the following set to `false` when using Heroku. [Herok
 | `REDIS_ENABLED`              | :white_check_mark:  | boolean |               |                                                                                                                             |
 | `REDIS_URL`                  | :white_check_mark:  | string  |               | Takes precedence over `REDIS_HOST`, `REDIS_PORT` and `REDIS_PASSWORD`.                                                      |
 | `REDIS_HOST`                 |                     | string  |               | **Only when `REDIS_URL` is not used**                                                                                       |
-| `REDIS_PORT`                 |                     | string  |               | **Only when `REDIS_URL` is not used**                                                                                       |
+| `REDIS_PORT`                 |                     | string  |     6379      | **Only when `REDIS_URL` is not used**                                                                                       |
 | `REDIS_PASSWORD`             |                     | string  |               | **Only when `REDIS_URL` is not used**                                                                                       |
 | `REDIS_DB`                   |                     | integer |       0       | Default database to use, this database will be used for all Redis connections                                               |  
 | `REDIS_RETRIES`              |                     | integer |       1       | Th..ount of times to retry connecting after connection has timed out                                                        |
