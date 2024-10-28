@@ -58,7 +58,7 @@ class Session extends Component
             'as session' => SessionBehavior::class,
             'flashParam' => $stateKeyPrefix . '__flash',
             'authAccessParam' => $stateKeyPrefix . '__auth_access',
-            'name' => Craft::$app->getConfig()->getGeneral()->phpSessionName ?? 'CraftSessionId',
+            'name' => Craft::$app?->getConfig()->getGeneral()->phpSessionName ?? 'CraftSessionId',
             'cookieParams' => Craft::cookieConfig(),
         ];
     }

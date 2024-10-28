@@ -26,7 +26,7 @@ class Cache extends Component
         return Craft::createObject([
             'class' => YiiRedisCache::class,
             'keyPrefix' => static::prefixKey(self::class),
-            'defaultDuration' => Craft::$app->getConfig()->getGeneral()->cacheDuration ?? 86400,
+            'defaultDuration' => Craft::$app?->getConfig()->getGeneral()->cacheDuration ?? 86400,
             'redis' => $redis,
         ]);
     }
@@ -40,7 +40,7 @@ class Cache extends Component
         return Craft::createObject([
             'class' => DbCache::class,
             'keyPrefix' => static::prefixKey(self::class),
-            'defaultDuration' => Craft::$app->getConfig()->getGeneral()->cacheDuration ?? 86400,
+            'defaultDuration' => Craft::$app?->getConfig()->getGeneral()->cacheDuration ?? 86400,
         ]);
     }
 }
