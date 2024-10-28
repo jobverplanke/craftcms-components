@@ -113,7 +113,7 @@ class Redis
     private static function ensureYiiRedisExtensionIsInstalled(): void
     {
         if (! class_exists(Connection::class)) {
-            throw new RedisException('Missing Yii Redis extension, run [composer install yiisoft/yii2-redis] to install.');
+            throw new RedisException('Missing Yii Redis extension, run [composer require yiisoft/yii2-redis] to install.');
         }
     }
 }
