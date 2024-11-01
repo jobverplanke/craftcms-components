@@ -16,6 +16,16 @@ Available components and drivers
 > Craft v4: https://craftcms.com/docs/4.x/config/app.html#queue <br>
 > Craft v5: https://craftcms.com/docs/5.x/reference/config/app.html#queue
 
+## Installation
+```shell
+composer require jobverplanke/craftcms-components
+```
+
+Make sure that the `yiisoft/yii2-redis` package is installed when utilizing Redis
+```shell
+composer require yiisoft/yii2-redis
+```
+
 ## Configuration
 To make use of a different driver per component is a breeze. Just specify the desired driver for the component you want to use in the `components` config array in either `config/app.php` or `config/app.web.php` (session only).
 
