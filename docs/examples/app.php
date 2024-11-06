@@ -13,5 +13,5 @@ return [
         'redis' => Redis::connect(),
         'cache' => fn () => Cache::driver('redis'),
         'queue' => Queue::driver('redis'),
-    ]
+    ],
 ];

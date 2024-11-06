@@ -22,7 +22,7 @@ class Session extends Component
     public static function redis(): YiiRedisSession
     {
         $redis = Redis::connect();
-        $redis['database'] = App::env('REDIS_SESSION_DB') ?? 2;
+        $redis['database'] = App::env('REDIS_SESSION_DB') ?: 2;
 
         $config = array_merge(self::config(), [
             'class' => YiiRedisSession::class,
