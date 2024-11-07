@@ -10,8 +10,3 @@ function class_basename(object|string $class): string
 
     return basename(str_replace('\\', '/', $class));
 }
-
-function isCraft3(): bool
-{
-    return defined('Craft::Personal');
-}

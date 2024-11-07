@@ -31,9 +31,9 @@ class Queue extends Component
             'attempts' => App::env('REDIS_QUEUE_ATTEMPTS') ?: 3,
         ];
 
-        return isCraft3()
-            ? $config
-            : ['proxyQueue' => $config];
+        return ! defined('Craft::Personal')
+            ? ['proxyQueue' => $config]
+            : $config;
     }
 
     /**
