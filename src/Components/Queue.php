@@ -7,6 +7,8 @@ namespace Verplanke\CraftComponents\Components;
 use craft\helpers\App;
 use Verplanke\CraftComponents\Component;
 use Verplanke\CraftComponents\Exceptions\QueueException;
+use yii\queue\redis\Queue as YiiRedisQueue;
+use function Verplanke\CraftComponents\isCraft3;
 
 class Queue extends Component
 {
@@ -19,17 +21,19 @@ class Queue extends Component
     protected static function redis(): array
     {
         $redis = Redis::connect();
-        $redis['database'] = App::env('REDIS_QUEUE_DB') ?? 3;
+        $redis['database'] = App::env('REDIS_QUEUE_DB') ?: 3;
 
-        return [
-            'proxyQueue' => [
-                'class' => \yii\queue\redis\Queue::class,
-                'redis' => $redis,
-                'channel' => App::env('REDIS_QUEUE_CHANNEL') ?? 'queue',
-                'ttr' => App::env('REDIS_QUEUE_TTR') ?? 300,
-                'attempts' => App::env('REDIS_QUEUE_ATTEMPTS') ?? 3,
-            ],
+        $config = [
+            'class' => YiiRedisQueue::class,
+            'redis' => $redis,
+            'channel' => App::env('REDIS_QUEUE_CHANNEL') ?: 'queue',
+            'ttr' => App::env('REDIS_QUEUE_TTR') ?: 300,
+            'attempts' => App::env('REDIS_QUEUE_ATTEMPTS') ?: 3,
         ];
+
+        return ! defined('Craft::Personal')
+            ? ['proxyQueue' => $config]
+            : $config;
     }
 
     /**
