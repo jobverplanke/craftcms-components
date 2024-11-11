@@ -6,6 +6,6 @@ use Verplanke\CraftComponents\Components\Session;
 
 return [
     'components' => [
-        'session' => fn () => Session::driver('redis'),
+        'session' => fn () => Session::driver(App::env('CRAFT_SESSION_DRIVER')),
     ],
 ];

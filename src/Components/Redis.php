@@ -47,13 +47,13 @@ class Redis
             'hostname' => $urlComponents['hostname'],
             'port' => $urlComponents['port'],
             'password' => $urlComponents['password'],
-            'useSSL' => App::env('REDIS_SSL') ?: false,
-            'retries' => App::env('REDIS_RETRIES') ?: 1,
-            'database' => App::env('REDIS_DB') ?: 0,
+            'useSSL' => App::env('REDIS_SSL') ?? false,
+            'retries' => App::env('REDIS_RETRIES') ?? 1,
+            'database' => App::env('REDIS_DB') ?? 0,
             'contextOptions' => [
                 'ssl' => [
-                    'verify_peer' => App::env('REDIS_SSL_VERIFY_PEER') ?: false,
-                    'verify_peer_name' => App::env('REDIS_SSL_VERIFY_PEER_NAME') ?: false,
+                    'verify_peer' => App::env('REDIS_SSL_VERIFY_PEER') ?? false,
+                    'verify_peer_name' => App::env('REDIS_SSL_VERIFY_PEER_NAME') ?? false,
                 ],
             ],
         ];
@@ -65,7 +65,7 @@ class Redis
      */
     private static function parseUrl(): array
     {
-        $parsed = parse_url(App::env('REDIS_URL') ?: '');
+        $parsed = parse_url(App::env('REDIS_URL') ?? '');
 
         $scheme = match ($parsed['scheme'] ?? null) {
             'rediss' => 'tls',
@@ -74,10 +74,10 @@ class Redis
 
         return [
             'scheme' => $scheme,
-            'hostname' => $parsed['host'] ?? App::env('REDIS_HOST') ?: $parsed['path'] ?? null,
-            'port' => $parsed['port'] ?? App::env('REDIS_PORT') ?: 6379,
+            'hostname' => $parsed['host'] ?? App::env('REDIS_HOST') ?? $parsed['path'] ?? null,
+            'port' => $parsed['port'] ?? App::env('REDIS_PORT') ?? 6379,
             'user' => $parsed['user'] ?? null,
-            'password' => $parsed['pass'] ?? App::env('REDIS_PASSWORD') ?: null,
+            'password' => $parsed['pass'] ?? App::env('REDIS_PASSWORD') ?? null,
         ];
     }
 

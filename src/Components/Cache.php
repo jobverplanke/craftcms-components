@@ -21,7 +21,7 @@ class Cache extends Component
     protected static function redis(): YiiRedisCache
     {
         $redis = Redis::connect();
-        $redis['database'] = App::env('REDIS_CACHE_DB') ?: 1;
+        $redis['database'] = App::env('REDIS_CACHE_DB') ?? 1;
 
         return Craft::createObject([
             'class' => YiiRedisCache::class,

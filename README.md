@@ -1,5 +1,5 @@
 ## Introduction
-Simple driver setup for CraftCMS components queue, cache or session for CraftCMS v3, v4 and v5.
+Simple driver setup for CraftCMS components queue, cache or session for CraftCMS v4 and v5.
 
 Available components and drivers
 
@@ -13,7 +13,6 @@ Available components and drivers
 > Craft's default queue driver is the database.
 > Do not configure the queue component in the app.php if you want to make use of the database queue driver.
 > 
-> Craft v3: https://craftcms.com/docs/3.x/config/#queue-component <br />
 > Craft v4: https://craftcms.com/docs/4.x/config/app.html#queue <br />
 > Craft v5: https://craftcms.com/docs/5.x/reference/config/app.html#queue
 
