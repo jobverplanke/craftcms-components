@@ -8,7 +8,6 @@ use craft\helpers\App;
 use Verplanke\CraftComponents\Component;
 use Verplanke\CraftComponents\Exceptions\QueueException;
 use yii\queue\redis\Queue as YiiRedisQueue;
-use function Verplanke\CraftComponents\isCraft3;
 
 class Queue extends Component
 {

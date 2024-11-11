@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Verplanke\CraftComponents\Components;
 
 use craft\helpers\App;
-use Exception;
 use Verplanke\CraftComponents\Exceptions\RedisException;
 use Throwable;
 use yii\redis\Connection;
@@ -22,10 +21,6 @@ class Redis
     public static function connect(): array
     {
         try {
-            if (! Redis::isEnabled()) {
-                throw new Exception('Redis is not enabled. Enable Redis using environment variable REDIS_ENABLED');
-            }
-
             Redis::ensureRedisExtensionIsEnabled();
             Redis::ensureYiiRedisExtensionIsInstalled();
 
@@ -37,17 +32,6 @@ class Redis
 
             throw $throwable;
         }
-    }
-
-    /**
-     * @throws \yii\base\Exception
-     */
-    public static function isEnabled(): bool
-    {
-        return match (App::env('REDIS_ENABLED')) {
-            true, 'true', 0 => true,
-            default => false,
-        };
     }
 
     /**
