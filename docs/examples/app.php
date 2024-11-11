@@ -11,7 +11,7 @@ return [
     'id' => App::env('CRAFT_APP_ID') ?: 'CraftCMS',
     'components' => [
         'redis' => Redis::connect(),
-        'cache' => fn () => Cache::driver('redis'),
-        'queue' => Queue::driver('redis'),
+        'cache' => fn () => Cache::driver(App::env('CRAFT_CACHE_DRIVER')),
+        'queue' => Queue::driver(App::env('CRAFT_QUEUE_DRIVER')),
     ],
 ];
